@@ -11,7 +11,15 @@
     <h1>Unstable SMP Archive</h1>
 
     <p id="status">Connecting to Supabase...</p>
-    <p id="message">Loading test message...</p>
+
+    <h2 id="title">Loading...</h2>
+    <p id="episode"></p>
+    <p id="pov"></p>
+    <p id="youtube-id"></p>
+    <p id="upload-date"></p>
+
+    <h3>Short Summary</h3>
+    <p id="short-summary"></p>
 
     <!-- Load Supabase JavaScript library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -23,18 +31,19 @@
         const { createClient } = supabase;
         const db = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        async function loadTestMessage() {
+        async function loadVideo() {
             const { data, error } = await db
-                .from("test")
-                .select("message")
+                .from("videos")
+                .select("episode, title, pov, youtube_id, upload_date, short_summary")
+                .eq("episode", 1)
                 .limit(1);
 
             if (error) {
                 console.error(error);
+
                 document.getElementById("status").textContent =
                     "Error connecting to Supabase :(";
-                document.getElementById("message").textContent =
-                    error.message;
+
                 return;
             }
 
@@ -42,15 +51,36 @@
                 "Supabase connection works! :D";
 
             if (data && data.length > 0) {
-                document.getElementById("message").textContent =
-                    data[0].message;
+                const video = data[0];
+
+                document.getElementById("title").textContent =
+                    video.title;
+
+                document.getElementById("episode").textContent =
+                    "Episode: " + video.episode;
+
+                document.getElementById("pov").textContent =
+                    "POV: " + video.pov;
+
+                document.getElementById("youtube-id").textContent =
+                    "YouTube ID: " + video.youtube_id;
+
+                document.getElementById("upload-date").textContent =
+                    "Uploaded: " + video.upload_date;
+
+                document.getElementById("short-summary").textContent =
+                    video.short_summary;
+
             } else {
-                document.getElementById("message").textContent =
-                    "No messages found in 'test' table.";
+                document.getElementById("status").textContent =
+                    "Supabase connection works! :D";
+
+                document.getElementById("title").textContent =
+                    "Episode not found";
             }
         }
 
-        loadTestMessage();
+        loadVideo();
     </script>
 
 </body>
