@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Unstable SMP ARCHIVE</title>
+</head>
+<body>
+
+    <h1>Unstable SMP Archive</h1>
+
+    <p id="status">Connecting to Supabase...</p>
+    <p id="message">Loading test message...</p>
+
+    <!-- Load Supabase JavaScript library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        const SUPABASE_URL = "https://twxaolsihffsyfcunrhf.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_1-h5qADngoUkagXaxad4OQ_8GdWooj1";
+
+        const { createClient } = supabase;
+        const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function loadTestMessage() {
+            const { data, error } = await db
+                .from("test")
+                .select("message")
+                .limit(1);
+
+            if (error) {
+                console.error(error);
+                document.getElementById("status").textContent =
+                    "Error connecting to Supabase :(";
+                document.getElementById("message").textContent =
+                    error.message;
+                return;
+            }
+
+            document.getElementById("status").textContent =
+                "Supabase connection works! :D";
+
+            if (data && data.length > 0) {
+                document.getElementById("message").textContent =
+                    data[0].message;
+            } else {
+                document.getElementById("message").textContent =
+                    "No messages found in 'test' table.";
+            }
+        }
+
+        loadTestMessage();
+    </script>
+
+</body>
+</html>
