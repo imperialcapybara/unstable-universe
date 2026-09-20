@@ -34,21 +34,22 @@
         async function loadVideo() {
             const { data, error } = await db
                 .from("videos")
-                .select("episode, title, pov, youtube_id, upload_date, short_summary")
-                .eq("episode", 1)
+                .select("*")
                 .limit(1);
 
             if (error) {
                 console.error(error);
 
                 document.getElementById("status").textContent =
-                    "Error connecting to Supabase :(";
+                    "Error reading videos table :(";
 
                 return;
             }
 
             document.getElementById("status").textContent =
                 "Supabase connection works! :D";
+
+            console.log(data);
 
             if (data && data.length > 0) {
                 const video = data[0];
@@ -72,11 +73,8 @@
                     video.short_summary;
 
             } else {
-                document.getElementById("status").textContent =
-                    "Supabase connection works! :D";
-
                 document.getElementById("title").textContent =
-                    "Episode not found";
+                    "No videos found";
             }
         }
 
