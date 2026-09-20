@@ -23,26 +23,22 @@
         /* HEADER */
 
         header {
-            padding: 28px 8%;
+            padding: 22px 6%;
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            background: rgba(8, 11, 16, 0.65);
+            background: rgba(8, 11, 16, 0.7);
             backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 10;
         }
 
         .header-inner {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 20px;
         }
 
         .logo {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
             letter-spacing: 1px;
         }
@@ -53,31 +49,34 @@
 
         nav {
             display: flex;
-            gap: 18px;
+            gap: 22px;
         }
 
         nav a {
-            color: #aeb8c7;
+            color: #9da8b8;
             text-decoration: none;
             font-size: 14px;
-            transition: 0.2s;
         }
 
         nav a:hover {
             color: white;
         }
 
+
         /* MAIN */
 
         main {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: auto;
             padding: 70px 25px;
         }
 
+
+        /* HERO */
+
         .hero {
             text-align: center;
-            margin-bottom: 55px;
+            margin-bottom: 80px;
         }
 
         .hero-badge {
@@ -87,14 +86,14 @@
             background: rgba(110, 231, 183, 0.12);
             border: 1px solid rgba(110, 231, 183, 0.25);
             color: #6ee7b7;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
-            margin-bottom: 18px;
+            letter-spacing: 1px;
         }
 
         .hero h1 {
-            font-size: clamp(40px, 7vw, 76px);
-            margin: 0;
+            font-size: clamp(42px, 7vw, 76px);
+            margin: 18px 0 0;
             font-weight: 1000;
             letter-spacing: -3px;
         }
@@ -107,69 +106,81 @@
             color: #9ca8b8;
             font-size: 17px;
             max-width: 600px;
-            margin: 20px auto 0;
+            margin: 18px auto 0;
             line-height: 1.6;
         }
+
+
+        /* BEGINNING HEADING */
+
+        .beginning {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .beginning h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            margin: 0;
+            font-weight: 900;
+        }
+
+        .beginning h2 .flair {
+            color: #6ee7b7;
+            font-style: italic;
+            position: relative;
+            display: inline-block;
+        }
+
+        .beginning h2 .flair::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 3px;
+            border-radius: 10px;
+            background: #6ee7b7;
+            transform: rotate(-2deg);
+            box-shadow: 0 0 12px rgba(110, 231, 183, 0.7);
+        }
+
+        .beginning p {
+            color: #7f8b9c;
+            margin-top: 12px;
+        }
+
+
+        /* EPISODE GRID */
+
+        .episodes {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
 
         /* EPISODE CARD */
 
         .episode-card {
-            background: rgba(18, 24, 34, 0.86);
-            border: 1px solid rgba(255,255,255,0.09);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
-        }
-
-        .episode-top {
-            padding: 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 25px;
-        }
-
-        .episode-number {
-            color: #6ee7b7;
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .episode-title {
-            font-size: clamp(28px, 4vw, 46px);
-            margin: 0;
-            line-height: 1.1;
-        }
-
-        .meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .pill {
-            background: #252e3d;
+            background: rgba(18, 24, 34, 0.9);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 999px;
-            padding: 8px 13px;
-            color: #cbd5e1;
-            font-size: 13px;
+            border-radius: 17px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transition: transform 0.25s, border-color 0.25s;
         }
 
-        .pill strong {
-            color: white;
+        .episode-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(110, 231, 183, 0.35);
         }
 
-        /* VIDEO */
+
+        /* YOUTUBE */
 
         .video-container {
             aspect-ratio: 16 / 9;
             background: #05070a;
-            position: relative;
         }
 
         .video-container iframe {
@@ -178,89 +189,84 @@
             border: 0;
         }
 
-        /* CONTENT */
 
-        .content {
-            padding: 35px;
+        /* CARD CONTENT */
+
+        .card-content {
+            padding: 20px;
         }
 
-        .section {
-            margin-bottom: 35px;
+        .episode-number {
+            color: #6ee7b7;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 7px;
         }
 
-        .section:last-child {
-            margin-bottom: 0;
+        .episode-title {
+            font-size: 22px;
+            line-height: 1.2;
+            margin: 0;
         }
 
-        .section-title {
+        .meta {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 19px;
-            margin-bottom: 13px;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 13px;
         }
 
-        .section-title::before {
-            content: "";
-            width: 4px;
-            height: 22px;
-            background: #6ee7b7;
-            border-radius: 10px;
+        .pill {
+            background: #252e3d;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 999px;
+            padding: 6px 10px;
+            color: #cbd5e1;
+            font-size: 11px;
+        }
+
+        .pill strong {
+            color: white;
         }
 
         .summary {
-            color: #b5bfcc;
-            line-height: 1.8;
-            font-size: 15px;
+            color: #9da8b8;
+            line-height: 1.6;
+            font-size: 13px;
+            margin: 16px 0 0;
         }
+
 
         /* FOOTER */
 
         footer {
             text-align: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
             color: #687386;
             font-size: 13px;
         }
 
-        /* LOADING */
-
-        #status {
-            text-align: center;
-            color: #6ee7b7;
-            margin-bottom: 30px;
-        }
-
-        #episode {
-            display: none;
-        }
 
         /* MOBILE */
 
-        @media (max-width: 700px) {
-
-            header {
-                padding: 20px;
-            }
+        @media (max-width: 750px) {
 
             nav {
                 display: none;
             }
 
             main {
-                padding: 45px 15px;
+                padding: 50px 15px;
             }
 
-            .hero h1 {
-                letter-spacing: -2px;
+            .episodes {
+                grid-template-columns: 1fr;
             }
 
-            .episode-top {
-                padding: 24px;
-            }
-
-            .content {
-                padding: 25px;
+            .hero {
+                margin-bottom: 60px;
             }
         }
     </style>
@@ -270,6 +276,7 @@
 
     <header>
         <div class="header-inner">
+
             <div class="logo">
                 UNSTABLE SMP <span>ARCHIVE</span>
             </div>
@@ -279,13 +286,17 @@
                 <a href="#">Episodes</a>
                 <a href="#">Characters</a>
             </nav>
+
         </div>
     </header>
 
 
     <main>
 
+        <!-- HERO -->
+
         <section class="hero">
+
             <div class="hero-badge">
                 THE UNSTABLE SMP • ARCHIVE
             </div>
@@ -298,97 +309,28 @@
                 Explore the episodes, stories, characters, and history
                 of the Unstable SMP.
             </p>
+
         </section>
 
 
-        <p id="status">Connecting to Supabase...</p>
+        <!-- BEGINNING -->
+
+        <section class="beginning">
+
+            <h2>
+                This is how it <span class="flair">began</span>.
+            </h2>
+
+            <p>
+                Before the chaos, before the wars, there was this.
+            </p>
+
+        </section>
 
 
-        <section class="episode-card" id="episode">
+        <!-- EPISODES -->
 
-            <div class="episode-top">
-
-                <div>
-                    <div class="episode-number" id="episode-number">
-                        Episode 1
-                    </div>
-
-                    <h2 class="episode-title" id="title">
-                        Loading...
-                    </h2>
-
-                    <div class="meta">
-
-                        <div class="pill">
-                            POV:
-                            <strong id="pov">Loading...</strong>
-                        </div>
-
-                        <div class="pill">
-                            Uploaded:
-                            <strong id="date">Loading...</strong>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="video-container">
-
-                <iframe
-                    id="youtube"
-                    src=""
-                    title="Unstable SMP Episode"
-                    allowfullscreen>
-                </iframe>
-
-            </div>
-
-
-            <div class="content">
-
-                <section class="section">
-
-                    <h3 class="section-title">
-                        Short Summary
-                    </h3>
-
-                    <p class="summary" id="short-summary">
-                        Loading summary...
-                    </p>
-
-                </section>
-
-
-                <section class="section">
-
-                    <h3 class="section-title">
-                        Characters
-                    </h3>
-
-                    <p class="summary">
-                        Character information will appear here.
-                    </p>
-
-                </section>
-
-
-                <section class="section">
-
-                    <h3 class="section-title">
-                        Long Summary
-                    </h3>
-
-                    <p class="summary">
-                        The spoiler-filled episode summary will appear here.
-                    </p>
-
-                </section>
-
-            </div>
-
+        <section class="episodes" id="episodes">
         </section>
 
     </main>
@@ -399,7 +341,7 @@
     </footer>
 
 
-    <!-- Supabase -->
+    <!-- SUPABASE -->
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -419,74 +361,94 @@
         );
 
 
-        async function loadEpisode() {
+        async function loadEpisodes() {
 
             const { data, error } = await db
                 .from("videos")
                 .select("*")
-                .eq("episode", 1)
-                .limit(1);
+                .in("episode", [1, 2, 3, 4])
+                .order("episode", { ascending: true });
 
 
             if (error) {
 
                 console.error(error);
 
-                document.getElementById("status").textContent =
-                    "Error connecting to Supabase :(";
+                document.getElementById("episodes").innerHTML =
+                    "<p>Could not load episodes :(</p>";
 
                 return;
             }
 
 
-            if (!data || data.length === 0) {
-
-                document.getElementById("status").textContent =
-                    "Episode not found :(";
-
-                return;
-            }
+            const container =
+                document.getElementById("episodes");
 
 
-            const video = data[0];
+            data.forEach(video => {
+
+                const card =
+                    document.createElement("article");
+
+                card.className = "episode-card";
 
 
-            document.getElementById("status").textContent =
-                "Supabase connection works! :D";
+                card.innerHTML = `
+
+                    <div class="video-container">
+
+                        <iframe
+                            src="https://www.youtube.com/embed/${video.youtube_id}"
+                            title="${video.title}"
+                            loading="lazy"
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
 
 
-            document.getElementById("episode").style.display =
-                "block";
+                    <div class="card-content">
+
+                        <div class="episode-number">
+                            Episode ${video.episode}
+                        </div>
+
+                        <h2 class="episode-title">
+                            ${video.title}
+                        </h2>
 
 
-            document.getElementById("episode-number").textContent =
-                "Episode " + video.episode;
+                        <div class="meta">
+
+                            <div class="pill">
+                                POV:
+                                <strong>${video.pov}</strong>
+                            </div>
+
+                            <div class="pill">
+                                ${video.upload_date}
+                            </div>
+
+                        </div>
 
 
-            document.getElementById("title").textContent =
-                video.title;
+                        <p class="summary">
+                            ${video.short_summary}
+                        </p>
+
+                    </div>
+
+                `;
 
 
-            document.getElementById("pov").textContent =
-                video.pov;
+                container.appendChild(card);
 
-
-            document.getElementById("date").textContent =
-                video.upload_date;
-
-
-            document.getElementById("short-summary").textContent =
-                video.short_summary;
-
-
-            document.getElementById("youtube").src =
-                "https://www.youtube.com/embed/" +
-                video.youtube_id;
+            });
 
         }
 
 
-        loadEpisode();
+        loadEpisodes();
 
     </script>
 
