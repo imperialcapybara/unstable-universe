@@ -162,17 +162,32 @@
         /* EPISODE CARD */
 
         .episode-card {
+            display: block;
+
             background: rgba(18, 24, 34, 0.9);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 17px;
             overflow: hidden;
+
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            transition: transform 0.25s, border-color 0.25s;
+
+            transition:
+                transform 0.25s,
+                border-color 0.25s,
+                box-shadow 0.25s;
+
+            text-decoration: none;
+            color: inherit;
         }
 
         .episode-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(110, 231, 183, 0.35);
+
+            border-color:
+                rgba(110, 231, 183, 0.35);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.4);
         }
 
 
@@ -239,6 +254,64 @@
         }
 
 
+        /* SEE OTHER VIDEOS BUTTON */
+
+        .other-videos-container {
+            display: flex;
+            justify-content: center;
+
+            margin-top: 45px;
+            margin-bottom: 20px;
+        }
+
+        .other-videos-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+
+            padding: 18px 38px;
+
+            min-width: 260px;
+
+            border-radius: 15px;
+
+            background: #6ee7b7;
+            color: #08110e;
+
+            font-size: 17px;
+            font-weight: 900;
+
+            text-decoration: none;
+
+            box-shadow:
+                0 10px 30px rgba(110, 231, 183, 0.22);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s,
+                background 0.2s;
+        }
+
+        .other-videos-button:hover {
+            transform: translateY(-5px) scale(1.03);
+
+            background: #8af0c5;
+
+            box-shadow:
+                0 18px 40px rgba(110, 231, 183, 0.35);
+        }
+
+        .other-videos-button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .other-videos-arrow {
+            font-size: 22px;
+            font-weight: 1000;
+        }
+
+
         /* FOOTER */
 
         footer {
@@ -268,6 +341,11 @@
             .hero {
                 margin-bottom: 60px;
             }
+
+            .other-videos-button {
+                width: 100%;
+                max-width: 350px;
+            }
         }
     </style>
 </head>
@@ -275,6 +353,7 @@
 <body>
 
     <header>
+
         <div class="header-inner">
 
             <div class="logo">
@@ -288,10 +367,12 @@
             </nav>
 
         </div>
+
     </header>
 
 
     <main>
+
 
         <!-- HERO -->
 
@@ -313,12 +394,13 @@
         </section>
 
 
+
         <!-- BEGINNING -->
 
         <section class="beginning">
 
             <h2>
-                This is how it <span class="flair">began</span>.
+                This is how <span class="flair">it began</span>.
             </h2>
 
             <p>
@@ -328,10 +410,32 @@
         </section>
 
 
+
         <!-- EPISODES -->
 
         <section class="episodes" id="episodes">
         </section>
+
+
+
+        <!-- OTHER VIDEOS BUTTON -->
+
+        <div class="other-videos-container">
+
+            <a
+                href="videos.html"
+                class="other-videos-button">
+
+                <span class="other-videos-arrow">
+                    →
+                </span>
+
+                See Other Videos
+
+            </a>
+
+        </div>
+
 
     </main>
 
@@ -339,6 +443,7 @@
     <footer>
         Unstable SMP Archive • Created by ImperialCapybara • Contact me on Discord: @imperialcapybara
     </footer>
+
 
 
     <!-- SUPABASE -->
@@ -367,7 +472,9 @@
                 .from("videos")
                 .select("*")
                 .in("episode", [1, 2, 3, 4])
-                .order("episode", { ascending: true });
+                .order("episode", {
+                    ascending: true
+                });
 
 
             if (error) {
@@ -387,10 +494,19 @@
 
             data.forEach(video => {
 
-                const card =
-                    document.createElement("article");
+                /*
+                    Make the entire card clickable.
+                */
 
-                card.className = "episode-card";
+                const card =
+                    document.createElement("a");
+
+                card.className =
+                    "episode-card";
+
+                card.href =
+                    "videos.html?id="
+                    + video.episode;
 
 
                 card.innerHTML = `
@@ -421,8 +537,12 @@
                         <div class="meta">
 
                             <div class="pill">
+
                                 POV:
-                                <strong>${video.pov}</strong>
+                                <strong>
+                                    ${video.pov}
+                                </strong>
+
                             </div>
 
                             <div class="pill">
@@ -439,6 +559,22 @@
                     </div>
 
                 `;
+
+
+                /*
+                    Prevent clicking the YouTube iframe
+                    from also activating the episode link.
+                */
+
+                const iframe =
+                    card.querySelector("iframe");
+
+                iframe.addEventListener(
+                    "click",
+                    event => {
+                        event.stopPropagation();
+                    }
+                );
 
 
                 container.appendChild(card);
