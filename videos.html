@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Episode | Unstable SMP Archive</title>
+    <title>Episodes | Unstable SMP Archive</title>
 
     <style>
 
@@ -12,9 +12,12 @@
             box-sizing: border-box;
         }
 
+
         body {
             margin: 0;
+
             font-family: Arial, sans-serif;
+
             color: #f1f5f9;
 
             background:
@@ -43,24 +46,31 @@
             backdrop-filter: blur(12px);
 
             position: sticky;
+
             top: 0;
+
             z-index: 10;
         }
 
 
         .header-inner {
             max-width: 1200px;
+
             margin: auto;
 
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
         }
 
 
         .logo {
             font-size: 20px;
+
             font-weight: 900;
+
             letter-spacing: 1px;
         }
 
@@ -72,13 +82,16 @@
 
         nav {
             display: flex;
+
             gap: 22px;
         }
 
 
         nav a {
             color: #9da8b8;
+
             text-decoration: none;
+
             font-size: 14px;
 
             transition: 0.2s;
@@ -93,31 +106,277 @@
         /* MAIN */
 
         main {
-            max-width: 1050px;
+            max-width: 1000px;
+
             margin: auto;
 
             padding: 65px 20px 100px;
         }
 
 
-        /* EPISODE HEADER */
+        /* PAGE TITLE */
 
-        .episode-label {
+        .page-heading {
             text-align: center;
 
+            margin-bottom: 50px;
+        }
+
+
+        .page-heading .small-title {
             color: #6ee7b7;
 
             font-size: 13px;
+
             font-weight: bold;
 
             letter-spacing: 3px;
+
             text-transform: uppercase;
 
             margin-bottom: 12px;
         }
 
 
-        h1 {
+        .page-heading h1 {
+            margin: 0;
+
+            font-size:
+                clamp(38px, 6vw, 64px);
+
+            letter-spacing: -2px;
+        }
+
+
+        .page-heading h1 span {
+            color: #6ee7b7;
+
+            font-style: italic;
+
+            position: relative;
+        }
+
+
+        .page-heading h1 span::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: -5px;
+
+            height: 3px;
+
+            background: #6ee7b7;
+
+            border-radius: 10px;
+
+            transform: rotate(-2deg);
+
+            box-shadow:
+                0 0 12px rgba(110,231,183,0.7);
+        }
+
+
+        .page-heading p {
+            color: #7f8b9c;
+
+            margin-top: 18px;
+
+            line-height: 1.6;
+        }
+
+
+        /* EPISODE LIST */
+
+        #episode-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+        }
+
+
+        /* EPISODE WIDGET */
+
+        .episode-widget {
+            display: flex;
+
+            align-items: center;
+
+            gap: 22px;
+
+            width: 100%;
+
+            padding: 18px 22px;
+
+            text-decoration: none;
+
+            color: inherit;
+
+            background:
+                rgba(18, 24, 34, 0.9);
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            border-radius: 15px;
+
+            transition:
+                transform 0.2s,
+                border-color 0.2s,
+                background 0.2s;
+
+            cursor: pointer;
+        }
+
+
+        .episode-widget:hover {
+            transform: translateX(6px);
+
+            background:
+                rgba(25, 34, 47, 0.95);
+
+            border-color:
+                rgba(110,231,183,0.4);
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.25);
+        }
+
+
+        /* EPISODE NUMBER */
+
+        .episode-number {
+            min-width: 65px;
+
+            height: 65px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background:
+                rgba(110,231,183,0.1);
+
+            border:
+                1px solid rgba(110,231,183,0.2);
+
+            color: #6ee7b7;
+
+            font-size: 17px;
+
+            font-weight: 900;
+        }
+
+
+        /* EPISODE INFO */
+
+        .episode-info {
+            flex: 1;
+
+            min-width: 0;
+        }
+
+
+        .episode-title {
+            font-size: 19px;
+
+            font-weight: 800;
+
+            margin: 0 0 8px;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+        }
+
+
+        .episode-meta {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+        }
+
+
+        .pill {
+            display: inline-block;
+
+            background: #252e3d;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            border-radius: 999px;
+
+            padding: 5px 9px;
+
+            color: #aeb8c7;
+
+            font-size: 11px;
+        }
+
+
+        .pill strong {
+            color: white;
+        }
+
+
+        /* ARROW */
+
+        .arrow {
+            font-size: 25px;
+
+            color: #566274;
+
+            transition: 0.2s;
+        }
+
+
+        .episode-widget:hover .arrow {
+            color: #6ee7b7;
+
+            transform: translateX(4px);
+        }
+
+
+        /* DETAIL PAGE */
+
+        #episode-page {
+            display: none;
+        }
+
+
+        #episode-page .episode-label {
+            text-align: center;
+
+            color: #6ee7b7;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+
+        #episode-page h1 {
             text-align: center;
 
             font-size:
@@ -156,6 +415,7 @@
 
         .video-wrapper iframe {
             width: 100%;
+
             height: 100%;
 
             border: 0;
@@ -177,24 +437,10 @@
         }
 
 
-        .pill {
-            background: #252e3d;
-
-            border:
-                1px solid rgba(255,255,255,0.08);
-
-            border-radius: 999px;
-
+        .meta .pill {
             padding: 8px 14px;
 
-            color: #cbd5e1;
-
             font-size: 13px;
-        }
-
-
-        .pill strong {
-            color: white;
         }
 
 
@@ -227,6 +473,7 @@
 
         .section-title {
             display: flex;
+
             align-items: center;
 
             gap: 10px;
@@ -241,6 +488,7 @@
             content: "";
 
             width: 4px;
+
             height: 23px;
 
             background: #6ee7b7;
@@ -263,7 +511,7 @@
         }
 
 
-        /* NAVIGATION */
+        /* PREVIOUS / NEXT */
 
         .episode-navigation {
             display: flex;
@@ -309,12 +557,7 @@
 
             color: #6ee7b7;
 
-            margin-top: 40px;
-        }
-
-
-        #episode-page {
-            display: none;
+            margin: 40px 0;
         }
 
 
@@ -348,6 +591,34 @@
             main {
                 padding:
                     45px 15px 70px;
+            }
+
+
+            .episode-widget {
+                gap: 14px;
+
+                padding: 14px;
+            }
+
+
+            .episode-number {
+                min-width: 52px;
+
+                width: 52px;
+
+                height: 52px;
+
+                font-size: 14px;
+            }
+
+
+            .episode-title {
+                font-size: 16px;
+            }
+
+
+            .episode-widget:hover {
+                transform: translateX(3px);
             }
 
 
@@ -392,7 +663,7 @@
                     Home
                 </a>
 
-                <a href="index.html#episodes">
+                <a href="videos.html">
                     Episodes
                 </a>
 
@@ -408,14 +679,45 @@
 
 
         <p id="status">
-            Loading episode...
+            Loading...
         </p>
 
 
-        <div id="episode-page">
+
+        <!-- EPISODE LIST -->
+
+        <section id="episode-list-page">
+
+            <div class="page-heading">
+
+                <div class="small-title">
+                    UNSTABLE SMP ARCHIVE
+                </div>
 
 
-            <!-- EPISODE NUMBER -->
+                <h1>
+                    All <span>Episodes</span>
+                </h1>
+
+
+                <p>
+                    Explore the complete history of the Unstable SMP.
+                </p>
+
+            </div>
+
+
+            <div id="episode-list">
+            </div>
+
+        </section>
+
+
+
+        <!-- INDIVIDUAL EPISODE -->
+
+        <section id="episode-page">
+
 
             <div
                 class="episode-label"
@@ -426,15 +728,11 @@
             </div>
 
 
-            <!-- TITLE -->
-
             <h1 id="title">
                 Loading...
             </h1>
 
 
-
-            <!-- YOUTUBE VIDEO -->
 
             <div class="video-wrapper">
 
@@ -448,8 +746,6 @@
             </div>
 
 
-
-            <!-- EPISODE INFORMATION -->
 
             <div class="meta">
 
@@ -472,12 +768,8 @@
 
 
 
-            <!-- CONTENT -->
-
             <div class="content">
 
-
-                <!-- SHORT SUMMARY -->
 
                 <section class="section">
 
@@ -495,8 +787,6 @@
 
 
 
-                <!-- CHARACTERS -->
-
                 <section class="section">
 
                     <h2 class="section-title">
@@ -511,8 +801,6 @@
                 </section>
 
 
-
-                <!-- LONG SUMMARY -->
 
                 <section class="section">
 
@@ -533,12 +821,15 @@
 
 
 
-            <!-- PREVIOUS / NEXT -->
-
             <div class="episode-navigation">
 
                 <a id="previous">
                     ← Previous Episode
+                </a>
+
+
+                <a href="videos.html">
+                    All Episodes
                 </a>
 
 
@@ -549,7 +840,7 @@
             </div>
 
 
-        </div>
+        </section>
 
     </main>
 
@@ -589,14 +880,20 @@
 
 
         /*
-            GET THE EPISODE NUMBER
-            FROM THE URL
+            CHECK THE URL
 
-            Example:
+            No ID:
 
-            videos.html?id=4
+                videos.html
 
-            episodeId = "4"
+            = show ALL episodes
+
+
+            With ID:
+
+                videos.html?id=4
+
+            = show Episode 4
         */
 
         const urlParams =
@@ -610,23 +907,127 @@
 
 
 
-        async function loadEpisode() {
+        /*
+            LOAD ALL EPISODES
+        */
+
+        async function loadEpisodeList() {
+
+            const { data, error } =
+                await db
+                    .from("videos")
+                    .select("*")
+                    .order("episode", {
+                        ascending: true
+                    });
 
 
-            /* No ID */
+            if (error) {
 
-            if (!episodeId) {
+                console.error(error);
 
                 document.getElementById("status")
                     .textContent =
-                    "No episode was specified.";
+                    "Could not load episodes.";
 
                 return;
             }
 
 
+            document.getElementById("status")
+                .style.display = "none";
 
-            /* Get episode from Supabase */
+
+            const list =
+                document.getElementById("episode-list");
+
+
+            list.innerHTML = "";
+
+
+            data.forEach(video => {
+
+                const link =
+                    document.createElement("a");
+
+
+                link.className =
+                    "episode-widget";
+
+
+                link.href =
+                    "videos.html?id="
+                    + video.episode;
+
+
+                link.innerHTML = `
+
+                    <div class="episode-number">
+
+                        ${video.episode}
+
+                    </div>
+
+
+                    <div class="episode-info">
+
+                        <h2 class="episode-title">
+
+                            ${video.title}
+
+                        </h2>
+
+
+                        <div class="episode-meta">
+
+                            <span class="pill">
+
+                                POV:
+                                <strong>
+                                    ${video.pov}
+                                </strong>
+
+                            </span>
+
+
+                            <span class="pill">
+
+                                ${video.upload_date}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="arrow">
+
+                        →
+
+                    </div>
+
+                `;
+
+
+                list.appendChild(link);
+
+            });
+
+        }
+
+
+
+        /*
+            LOAD ONE EPISODE
+        */
+
+        async function loadEpisode() {
+
+            if (!episodeId) {
+                return;
+            }
+
 
             const { data, error } =
                 await db
@@ -635,9 +1036,6 @@
                     .eq("episode", episodeId)
                     .limit(1);
 
-
-
-            /* Database error */
 
             if (error) {
 
@@ -651,9 +1049,6 @@
             }
 
 
-
-            /* Episode doesn't exist */
-
             if (!data || data.length === 0) {
 
                 document.getElementById("status")
@@ -664,13 +1059,14 @@
             }
 
 
-
-            /* Episode found */
-
             const video = data[0];
 
 
             document.getElementById("status")
+                .style.display = "none";
+
+
+            document.getElementById("episode-list-page")
                 .style.display = "none";
 
 
@@ -703,7 +1099,7 @@
 
 
 
-            /* Upload date */
+            /* Date */
 
             document.getElementById("date")
                 .textContent =
@@ -728,7 +1124,7 @@
 
 
 
-            /* Previous episode */
+            /* Previous */
 
             const previous =
                 document.getElementById("previous");
@@ -749,7 +1145,7 @@
 
 
 
-            /* Next episode */
+            /* Next */
 
             document.getElementById("next")
                 .href =
@@ -760,7 +1156,19 @@
 
 
 
-        loadEpisode();
+        /*
+            DECIDE WHAT TO SHOW
+        */
+
+        if (episodeId) {
+
+            loadEpisode();
+
+        } else {
+
+            loadEpisodeList();
+
+        }
 
     </script>
 
